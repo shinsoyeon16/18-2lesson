@@ -26,7 +26,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="lesson0912.cpp">
+    <ClCompile Include="test0912-3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
