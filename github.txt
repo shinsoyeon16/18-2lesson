@@ -1,6 +1,19 @@
 github bash 사용핳는거
 
 **커밋**
+git init
+
+git add [파일이름]
+
+git config --global user.name
+git config --global user.email
+
+git commit -m "커밋"
+
+**푸쉬**
+git remote add origin 깃허브주소
+git push -u origin master
+
 **삭제**
 //원격과 로컬저장소 둘다 삭제
 git rm [파일이름]
