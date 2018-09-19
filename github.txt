@@ -13,6 +13,8 @@ git commit -m "커밋"
 **푸쉬**
 git remote add origin 깃허브주소
 git push -u origin master
+//강제로 올리기
+git push -u origin master --force
 
 **삭제**
 //원격과 로컬저장소 둘다 삭제
