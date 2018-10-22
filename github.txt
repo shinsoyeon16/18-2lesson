@@ -32,7 +32,15 @@ git clone [깃허브 주소]
 **브랜치**
 git branch [이름] //브랜치 생성
 git branch //브랜치 확인
-git branch -d [이름] //브랜치 삭제
+git branch -r  //  로컬에 저장된 리모트 브랜치 조회
+git branch -a  //  모든 브랜치 정보 조회
+git branch -d [이름] // 로컬 브랜치 삭제
+git push origin :[브랜치이름] // remote 브랜치 삭제
 git checkout [브랜치] //브랜치 변경
 git checkout -b [브랜치] //브래치 생성하고 그걸로 변경
 git merge [병합할브랜치] // 지금있는 브랜치에 병합할브랜치가 합쳐짐
+
+**업뎃**
+git remote update
+git fetch
+git fetch --prune
