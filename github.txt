@@ -2,13 +2,12 @@ github bash 사용핳는거
 
 **커밋**
 git init
-
 git add [파일이름]
-
 git config --global user.name
 git config --global user.email
-
 git commit -m "커밋"
+git commit -C HEAD -a --amend //같은 커밋을 다시사용하여 커밋
+			// -c를 사용시 커밋 편집기 실행
 
 **푸쉬**
 git remote add origin 깃허브주소
