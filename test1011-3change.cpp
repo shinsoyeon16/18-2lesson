@@ -5,6 +5,7 @@
 #include<cstring>
 using namespace std;
 
+// 연산자의 우선순위를 지정하는 함수
 int Position(char op)
 {
 	switch (op)
@@ -22,6 +23,7 @@ int Position(char op)
 	return -1; 
 }
 
+// 연산자의 우선순위를 비교하는 함수
 int WhoHighPosition(char ex1, char ex2)
 {
 	int ex1Position = Position(ex1);
@@ -32,36 +34,35 @@ int WhoHighPosition(char ex1, char ex2)
 	else if (ex1Position < ex2Position)
 		return -1;
 	else
-		printf("문제발견\n");
 		return 0;
 }
 
-void Change(char s[])
+// 중위식을 후위식으로 변환하는 함수
+void Change(char expcpy[])
 {
-	printf("체인지 실행");
-	Stack stack;
-	int len = strlen(s);
+	Stack stack; //수식 변환 중 연산자 저장을 위한 스택생성
+	int len = strlen(expcpy);
 	char * convExp = new char[len];
 
 	int i, idx = 0;
-	char ex, pop;
+	//후위식으로 변환시 문자를 담을 c 변수와
+	//연산자를 담을 pop변수 선언
+	char c, pop; 
 
 	for (i = 0; i<len; i++)
 	{
-		printf("반복문실행");
-		ex = s[i];
-		if (isdigit(ex))
+		c = expcpy[i];
+		// c에 담긴 문자가 숫자인지 연산지인지 판단하는 조건문
+		if (isdigit(c))
 		{
-			convExp[idx++] = ex;
+			convExp[idx++] = c; //숫자라면 바로 convExp 배열에 저장
 		}
 		else
 		{
-			switch (ex)
+			switch (c)
 			{
-				printf("스위치실행");
-				cout<<convExp[idx]<< endl;
 			case '(':
-				stack.push(ex);
+				stack.push(c);
 				break;
 
 			case ')':
@@ -76,19 +77,18 @@ void Change(char s[])
 
 			case '+': case '-':
 			case '*': case '/':
-				printf("케이스 실행");
 				while (!stack.isEmpty() &&
-					WhoHighPosition(ex,stack.peek(&stack)))
+					WhoHighPosition(stack.peek(&stack),c)>=0)
 					convExp[idx++] = stack.pop(&stack);
-				stack.push(ex);
+				stack.push(c);
 				break;
 			}
 		}
 	}
-	printf("와일 탈출");
-	while (!stack.isEmpty())
+	while (!stack.isEmpty()) {
 		convExp[idx++] = stack.pop(&stack);
-
-	strcpy(s, convExp);
-	delete  []convExp;
+	}
+	convExp[idx] = '\0';
+	strcpy(expcpy, convExp);
+	delete[] convExp;
 }
